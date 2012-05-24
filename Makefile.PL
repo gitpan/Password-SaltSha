@@ -13,9 +13,9 @@ WriteMakefile(
       : ()),
     PL_FILES            => {},
     PREREQ_PM => {
-        'Test::More' 		=> 0,
-        'String::Random'	=> 0,
-        'Digest::SHA'		=> 0,
+        'Test::More' 		        => 0,
+        'Math::Random::MT::Auto'	=> 0,
+        'Crypt::SaltedHash' 		=> 0,
     },
     dist                => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', },
     clean               => { FILES => 'Password-SaltSha-*' },

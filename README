@@ -1,6 +1,6 @@
 Password::SaltSha
 
-Create and verify salted SHA2 password hashes for use in user logins.
+Create and verify salted SHA512 password hashes for use in user logins.
 
 INSTALLATION
 

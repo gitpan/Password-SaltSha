@@ -1,5 +1,5 @@
 ---
-abstract: 'The great new Password::SaltSha!'
+abstract: 'Generate and validate SHA-512 passwords seasoned with 128'
 author:
   - 'David Oswald <davido@cpan.org>'
 build_requires:
@@ -18,7 +18,7 @@ no_index:
     - t
     - inc
 requires:
-  Digest::SHA: 0
-  String::Random: 0
+  Crypt::SaltedHash: 0
+  Math::Random::MT::Auto: 0
   Test::More: 0
-version: 0.01
+version: 0.02

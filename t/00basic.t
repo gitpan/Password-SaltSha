@@ -4,38 +4,25 @@ use warnings;
 
 use Test::More;
 
-use Password::SaltSha qw( salt salted_sha_pass salt_n_salted_sha_pass );
+use Password::SaltSha qw( generate_salted_sha validate_salted_sha );
 
 my $pw = "Test0";
 
 
 like( 
-    salt(), qr/^[[:ascii:]]{40}$/, 
-    "salt() returns appropriate length, and reasonable characters." 
+    generate_salted_sha( $pw ), qr/^[[:ascii:]]{117}$/, 
+    "generate_salted_sha() returns appropriate length, " .
+    "and reasonable characters." 
 );
 
 
-like(
-    salted_sha_pass( $pw, salt() ), qr/^[[:xdigit:]]{64}$/,
-    "salt_sha_pass() returns appropriate charaters and length."
-);
 
 
-is( 
-    ref( salt_n_salted_sha_pass( $pw ) ), 'ARRAY', 
-    "salt_n_salted_sha_pass() returns an array ref."
-);
+my $result = generate_salted_sha( $pw );
 
-my $aref = salt_n_salted_sha_pass( $pw );
-
-like(
-    $aref->[0], qr/^[[:ascii:]]{40}$/,
-    "salt_n_salted_sha_pass()->[0] returns appropriate salt string."
-);
-
-like(
-    $aref->[1], qr/^[[:xdigit:]]{64}$/,
-    "salt_n_salted_sha_pass()->[1] returns appropriate salted sha hex digits."
+is(
+    validate_salted_sha( $result, $pw ), 1,
+    "validate_salted_sha() validates our original password against the hash."
 );
 
 

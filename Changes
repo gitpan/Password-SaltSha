@@ -1,6 +1,13 @@
 Revision history for Password-SaltSha
 
-0.01    13:24:00 May 23, 2012
-        First version.
+0.02    01:48:00 May 24, 2012
+        - Major rewrite replacing Digest::SHA and String::Random with
+          Crypt::SaltedHash and Math::Random::MT::Auto.
 
+        - API changed.
+        - API is now stable.
+        
+0.01    13:24:00 May 23, 2012
+        - First version.
+        - API is unstable, and likely to change.
 
